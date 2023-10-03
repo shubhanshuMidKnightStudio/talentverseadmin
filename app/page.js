@@ -20,7 +20,7 @@ const page = ({ onLogin }) => {
 
   return (
     <div className="items-center pt-10 pb-96 bg-slate-100">
-      <h1 className="text-3xl font-bold text-black text-center mb-20 mt-20">Login Page</h1>
+      <h1 className="text-3xl font-bold text-black text-center mb-20 mt-20">Talentverse Admin : Login Page</h1>
       <form
         onSubmit={handleSubmit}
         className="ml-50 flex flex-col justify-center items-center"
