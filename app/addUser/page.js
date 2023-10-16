@@ -112,7 +112,7 @@ const page = () => {
             value={role}
             onChange={(e) => setRole(e.target.value)}
           >
-            <option value="">Select a role</option>
+            <option value="">Assign a role</option>
             {roleOptions.map((option, index) => (
               <option key={index} value={option}>
                 {option}
@@ -121,7 +121,7 @@ const page = () => {
           </select>
         </div>
 
-        <button className="bg-black text-white px-4 py-3 text-xl font-bold rounded-xl m-4">
+        <button className="bg-black  text-white px-4 py-3 text-xl font-bold rounded-xl m-4">
           {editIndex !== null ? "Update User" : "Add User"}
         </button>
       </form>
