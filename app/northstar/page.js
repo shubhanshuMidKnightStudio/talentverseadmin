@@ -68,7 +68,7 @@ const page = () => {
           </div>
         </div>
 
-        <h2 className=" text-black text-2xl font-semibold text-center mb-5">
+        <h2 className=" text-black text-xl font-medium ml-28 mb-5">
           Northstar Application Form Details
         </h2>
 
