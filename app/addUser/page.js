@@ -25,7 +25,7 @@ const page = () => {
     // Reset input fields
     setUserName("");
     setPassword("");
-    setRole("")
+    setRole("");
   };
 
   const handleEdit = (i) => {
@@ -42,7 +42,7 @@ const page = () => {
     setUser(copyUsers);
   };
 
-  let renderTask = <h2>No Users Available</h2>;
+  let renderTask = <h2>No Users Available</h2>
 
   if (user.length > 0) {
     renderTask = user.map((u, i) => {
