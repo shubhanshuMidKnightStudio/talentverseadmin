@@ -35,7 +35,7 @@ const Reply = ({ ticketId, onSubmit, onCancel }) => {
             <h2 className="text-black">Message</h2>
             <input
               type="text"
-              className="text-base font-normal border-black border-2 mb-3 pl-2 rounded text-black h-36 align-text-top"
+              className="text-base font-normal border-black border-2 mb-3 pl-2 pb-20 h-28 rounded text-black"
               placeholder="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
