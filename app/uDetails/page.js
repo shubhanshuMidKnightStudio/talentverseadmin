@@ -2,6 +2,7 @@ import React from "react";
 import {
   MdDataSaverOn,
   MdOutlinePhotoSizeSelectActual,
+  MdOutlinePlayForWork,
   MdOutlineScreenShare,
   MdOutlineSmartDisplay,
   MdPeople,
@@ -44,7 +45,7 @@ const page = () => {
             <h3 className="text-black text-sm font-light"> 200 posts</h3>
           </div>
           <div className="flex flex-col bg-white border-2 px-12 py-5 rounded-xl ml-10">
-            <MdDataSaverOn className="text-blue-800 text-4xl" />
+            <MdOutlinePlayForWork className="text-blue-800 text-4xl" />
             <h2 className="text-black text-lg font-normal">Analytics</h2>
             <h3 className="text-black text-sm font-light"> Average</h3>
             <h3 className="text-black text-sm font-light"> Daily posts</h3>

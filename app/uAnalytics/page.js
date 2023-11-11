@@ -3,9 +3,28 @@ import React from "react";
 import { DiAndroid, DiAppstore } from "react-icons/di";
 import { FaMale, FaFemale, FaGenderless } from "react-icons/fa";
 import { BsDot } from "react-icons/bs";
-import { MdInterests,MdLink, MdOutlineSystemUpdateAlt, MdPeople } from "react-icons/md";
+import {
+  MdInterests,
+  MdLink,
+  MdOutlineSystemUpdateAlt,
+  MdPeople,
+} from "react-icons/md";
+import { PieChart, Pie, Sector, Cell, Tooltip } from "recharts";
 
 const page = () => {
+  const OSData = [
+    { name: "Android", value: 88499 },
+    { name: "IOS", value: 45000 },
+  ];
+  const COLORS = ["#ea5a0c", "#60a5fa"];
+
+  const GenderData = [
+    { name: "Male", value: 310 },
+    { name: "Female", value: 450 },
+    { name: "Others", value: 220 },
+  ];
+  const COLOR = ["#ea5a0c", "#1e3b8a"];
+
   return (
     <div className=" bg-slate-50 h-auto pb-10">
       <h1 className="px-8 py-8 text-black text-2xl font-semibold">
@@ -14,7 +33,7 @@ const page = () => {
 
       <div className="px-10 py-2 flex flex-row">
         <div className="flex flex-col border-blue border-2 rounded-md bg-white pl-5 w-1/3 pr-5">
-        <h1 className="text-black font-medium px-28 py-4 flex flex-row">
+          <h1 className="text-black font-medium px-28 py-4 flex flex-row">
             <MdOutlineSystemUpdateAlt className="text-black mt-1 mr-3" />
             Operating System
           </h1>
@@ -51,9 +70,54 @@ const page = () => {
               </tr>
             </tbody>
           </table>
+          <PieChart width={400} height={200}>
+            <Pie
+              dataKey="value"
+              isAnimationActive={false}
+              data={OSData}
+              cx={200}
+              cy={100}
+              outerRadius={80}
+              fill="#8884d8"
+              label={({
+                cx,
+                cy,
+                midAngle,
+                innerRadius,
+                outerRadius,
+                percent,
+                index,
+              }) => {
+                const RADIAN = Math.PI / 180;
+                const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+                const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+                return (
+                  <text
+                    x={x}
+                    y={y}
+                    fill="black"
+                    textAnchor={x > cx ? "start" : "end"}
+                    dominantBaseline="central"
+                  >
+                    {`${(percent * 100).toFixed(0)}%`}
+                  </text>
+                );
+              }}
+            >
+              {OSData.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+            <Tooltip />
+          </PieChart>
         </div>
         <div className="flex flex-col border-blue border-2 rounded-md bg-white pl-5 w-1/3 pr-5 ml-5">
-        <h1 className="text-black font-medium px-28 py-4 flex flex-row">
+          <h1 className="text-black font-medium px-28 py-4 flex flex-row">
             <MdPeople className="text-black mt-1 mr-3" />
             Gender
           </h1>
@@ -97,6 +161,51 @@ const page = () => {
               </tr>
             </tbody>
           </table>
+          <PieChart width={400} height={200}>
+            <Pie
+              dataKey="value"
+              isAnimationActive={false}
+              data={GenderData}
+              cx={200}
+              cy={100}
+              outerRadius={80}
+              fill="#8884d8"
+              label={({
+                cx,
+                cy,
+                midAngle,
+                innerRadius,
+                outerRadius,
+                percent,
+                index,
+              }) => {
+                const RADIAN = Math.PI / 180;
+                const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+                const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+                return (
+                  <text
+                    x={x}
+                    y={y}
+                    fill="black"
+                    textAnchor={x > cx ? "start" : "end"}
+                    dominantBaseline="central"
+                  >
+                    {`${(percent * 100).toFixed(0)}%`}
+                  </text>
+                );
+              }}
+            >
+              {OSData.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLOR[index % COLOR.length]}
+                />
+              ))}
+            </Pie>
+            <Tooltip />
+          </PieChart>
         </div>
       </div>
 
@@ -109,12 +218,8 @@ const page = () => {
           <table className="">
             <thead>
               <tr className="bg-slate-100">
-                <th className="text-black text-sm font-normal">
-                  Category
-                </th>
-                <th className="text-black text-sm font-normal">
-                  Followers
-                </th>
+                <th className="text-black text-sm font-normal">Category</th>
+                <th className="text-black text-sm font-normal">Followers</th>
               </tr>
             </thead>
             <tbody>
@@ -157,7 +262,7 @@ const page = () => {
         </div>
 
         <div className="flex flex-col border-blue border-2 rounded-md bg-white pl-5 w-2/5 pr-5 ml-10">
-        <h1 className="text-black font-medium px-20 py-4 flex flex-row">
+          <h1 className="text-black font-medium px-20 py-4 flex flex-row">
             <MdLink className="text-black mt-1 mr-3" />
             Referrals
           </h1>
