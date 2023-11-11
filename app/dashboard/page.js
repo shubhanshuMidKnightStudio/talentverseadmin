@@ -3,19 +3,20 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaApple, FaGooglePlay, FaUsers } from "react-icons/fa";
 import { FiLogOut, FiUsers } from "react-icons/fi";
-import { FcCustomerSupport } from "react-icons/fc";
+import { FcCustomerSupport, FcFeedback } from "react-icons/fc";
 import {
   MdInterests,
   MdPendingActions,
   MdPassword,
   MdCallReceived,
   MdOutlineInterests,
+  MdOutlineReport,
 } from "react-icons/md";
 import {
   VscVmActive,
-  VscReport,
   VscVerified,
   VscDashboard,
+  VscFeedback,
 } from "react-icons/vsc";
 import { BiDevices, BiSupport, BiSolidUser } from "react-icons/bi";
 import Password from "./password";
@@ -55,6 +56,10 @@ const page = () => {
 
   const handleReport = () => {
     router.push("/report");
+  };
+
+  const handleFeedback = () => {
+    router.push("/feedback");
   };
 
   const handleAddUsers = () => {
@@ -138,11 +143,19 @@ const page = () => {
             onClick={handleReport}
           >
             <h1 className="text-black mr-2 text-2xl">
-              <VscReport />
+              <MdOutlineReport />
             </h1>
             Report
           </button>
-
+          <button
+            className="text-left text-black text-base font-normal hover:text-blue-900 hover:bg-white active:bg-white px-3 py-3 rounded-md flex flex-row"
+            onClick={handleFeedback}
+          >
+            <h1 className="text-black mr-2 text-2xl">
+              <VscFeedback />
+            </h1>
+            Feedback
+          </button>
           <button
             className="text-left text-black text-base font-normal hover:text-blue-900 hover:bg-white active:bg-white px-3 py-3 rounded-md flex flex-row"
             onClick={handleAddUsers}

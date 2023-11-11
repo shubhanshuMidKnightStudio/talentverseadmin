@@ -24,6 +24,8 @@ const page = () => {
                 <th className="py-1 text-black text-sm font-normal">Name</th>
                 <th className="py-1 text-black text-sm font-normal">Email</th>
                 <th className="py-1 text-black text-sm font-normal">D O J</th>
+                <th className="py-1 text-black text-sm font-normal">OS</th>
+                <th className="py-1 text-black text-sm font-normal">Device</th>
                 <th className="py-1 text-black text-sm font-normal">Followers</th>
                 <th className="py-1 text-black text-sm font-normal">Following</th>
                 <th className="py-1 text-black text-sm font-normal">Status</th>
@@ -36,6 +38,8 @@ const page = () => {
                 <td className="py-1 text-black text-center">David Marner</td>
                 <td className="py-1 text-black text-center">david_123@talentverse.in</td>
                 <td className="py-1 text-black text-center"> 21 NOV 23</td>
+                <td className="py-1 text-black text-center"> IOS</td>
+                <td className="py-1 text-black text-center"> Apple</td>
                 <td className="py-1 text-black text-center"> 2167484</td>
                 <td className="py-1 text-black text-center"> 210484</td>
                 <td className="py-1 text-black text-center"> <h1

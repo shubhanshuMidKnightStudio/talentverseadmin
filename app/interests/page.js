@@ -5,31 +5,63 @@ import { MdInterests } from "react-icons/md";
 const page = () => {
   const [interest, setInterest] = useState("");
   const [category, setCategory] = useState([]);
+  const [editMode, setEditMode] = useState(false);
+  const [editInterest, setEditInterest] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (interest.trim() !== "") {
-      setCategory([...category, { interest }]);
+      if (editMode) {
+        // If in edit mode, update the existing category
+        const updatedCategory = category.map((c) =>
+          c.interest === editInterest ? { ...c, interest } : c
+        );
+        setCategory(updatedCategory);
+        setEditMode(false);
+        setEditInterest("");
+      } else {
+        // If not in edit mode, add a new category
+        setCategory([...category, { interest }]);
+      }
+
       setInterest("");
     }
   };
 
+  const handleEdit = (interestToEdit) => {
+    // Set edit mode to true, set the interest to edit in the input field
+    setEditMode(true);
+    setInterest(interestToEdit);
+    setEditInterest(interestToEdit);
+    
+    const updatedCategory = category.filter((c) => c.interest !== interestToEdit);
+    
+    setCategory(updatedCategory.concat({ interest: interestToEdit }));
+  };
+  
+
   let renderTask = <h2>Nothing to Display</h2>;
 
-  // Inside your component...
   if (category.length > 0) {
     renderTask = (
-      <ul className="text-center flex flex-wrap mt-4 pl-3">
+      <ul className="text-center flex flex-col mt-4 pl-3">
         {category.map((c, i) => (
-          <li
+          <div
             key={i}
-            className="text-left ml-5"
+            className=" ml-5 flex flex-row"
             style={{ width: "23%", marginBottom: "10px" }}
           >
-            <h5 className="text-sm text-orange-400 font-bold border-r border-gray-200 pr-2">
+            <h5 className="text-lg p-2 text-orange-400 font-bold pr-2">
               {c.interest}
+              
             </h5>
-          </li>
+            <button
+                className="ml-2 bg-sky-500  text-white px-2 py-1 rounded"
+                onClick={() => handleEdit(c.interest)}
+              >
+                Edit
+              </button>
+          </div>
         ))}
       </ul>
     );
@@ -55,7 +87,7 @@ const page = () => {
                 onChange={(e) => {
                   const inputText = e.target.value;
                   const regex = /^[A-Za-z\s]+$/;
-              
+
                   if (regex.test(inputText) || inputText === "") {
                     setInterest(inputText);
                   }
@@ -63,14 +95,16 @@ const page = () => {
               />
 
               <button className="bg-sky-500  text-white px-2 py-1 rounded">
-                Add
+                {editMode ? "Update" : "Add"}
               </button>
             </form>
+
+            
           </div>
 
           <div className="px-4 py-4 border-blue border-2 rounded-md h-auto bg-white w-80 pl-5  text-black mt-6">
             <p className="text-black text-xl font-normal">Category</p>
-            <ul className="text-center flex flex-row mt-4 pl-3">
+            <ul className="text-center flex flex-col mt-4 pl-3">
               {renderTask}
             </ul>
           </div>
